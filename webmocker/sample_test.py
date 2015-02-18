@@ -1,5 +1,5 @@
 __author__ = 'admin'
-import mock_server
+from webmocker import mock_server
 import unittest
 import requests
 import os
