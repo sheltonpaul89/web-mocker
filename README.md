@@ -9,3 +9,10 @@
 <i> Web Mocker package internally uses pretenders for stubbing , so install pretenders</i>
 
 pip install pretenders
+
+<i> Then install the web mocker package </i>
+
+pip install HYPERLINK "https://pypi.python.org/pypi/webmocker/0.1"webmocker
+
+
+<u>HYPERLINK "https://github.com/sheltonpaul89/webmocker/blob/master/webmocker/web_stubs/stubs.json"Sample Request Stub Json :</u>
