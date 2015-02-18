@@ -8,6 +8,6 @@ setup(
   author_email = 'peterldowns@gmail.com',
   url = 'https://github.com/peterldowns/mypackage', # use the URL to the github repo
   download_url = 'https://github.com/peterldowns/mypackage/tarball/0.1', # I'll explain this in a second
-  keywords = ['testing', 'logging', 'example'], # arbitrary keywords
+  keywords = ['testing', 'logging', 'example','mock'], # arbitrary keywords
   classifiers = [],
 )
