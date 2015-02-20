@@ -1,5 +1,5 @@
 __author__ = 'admin'
-from webmocker import mock_server
+import stubbing_engine
 import unittest
 import requests
 import os
@@ -9,28 +9,23 @@ class WebTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         os.environ["stub_files_path"] = 'web_stubs/'
-        mock_server.start_stubbing(stub_name='shel',port_number=8001)
+        stubbing_engine.start(port_number=8001)
 
     @classmethod
     def tearDownClass(cls):
-        # time.sleep(100000)
-        mock_server.stop_stubbing()
+        stubbing_engine.stop()
 
     def test_case1(self):
         capture = {}
-        captured = requests.get('http://127.0.0.1:8001/mockhttp/shel/with/query?search=Some text&searchtext=sheltonpaulinfant')
+        captured = requests.get('http://127.0.0.1:8001/with/query?search=Some text&searchtext=sheltonpaulinfant')
         print(captured.status_code)
         print(captured.text)
         self.assertEqual(captured.status_code, 230)
 
-        # captured = requests.get('http://localhost:8998/address/12')
-        # print(captured.status_code)
-        # status_code(captured.text)
-
     def test_case2(self):
         capture = {}
         payload = "<status>OK</status>";
-        captured = requests.post('http://127.0.0.1:8001/mockhttp/shel/with/body', data=payload)
+        captured = requests.post('http://127.0.0.1:8001/with/body', data=payload)
         print(captured.status_code)
         print(captured.text)
         self.assertEqual(captured.status_code, 270)
@@ -38,7 +33,7 @@ class WebTest(unittest.TestCase):
 
     def test_case3(self):
         capture = {}
-        captured = requests.get('http://127.0.0.1:8001/mockhttp/shel/with/query/extra/path?search=Some text&searchtext=sheltonpaulinfant')
+        captured = requests.get('http://127.0.0.1:8001/with/query/extra/path?search=Some text&searchtext=sheltonpaulinfant&firstName=paul&lastName=infant')
         print(captured.status_code)
         print(captured.text)
         self.assertEqual(captured.status_code, 230)
@@ -46,7 +41,7 @@ class WebTest(unittest.TestCase):
 
     def test_case4(self):
         capture = {}
-        captured = requests.get('http://127.0.0.1:8001/mockhttp/shel/some/thing')
+        captured = requests.get('http://127.0.0.1:8001/some/thing')
         print(captured.headers)
         print(captured.text)
         self.assertEqual(captured.status_code, 210)
@@ -57,8 +52,8 @@ class WebTest(unittest.TestCase):
 
     def test_case5(self):
         capture = {}
-        headers = {'content-type': 'text/xml','Accept' : 'text/json','ramp' : 'thissample'}
-        captured = requests.post('http://127.0.0.1:8001/mockhttp/shel/with/headers',headers = headers)
+        headers = {'content-type': 'text/xml','Accept' : 'text/jsondsadsa','ramp' : 'thissample','X-Custom-Header':'2134thisisthenight','etag':'123abbccd1234'}
+        captured = requests.post('http://127.0.0.1:8001/with/headers',headers = headers)
         print(captured.status_code)
         print("Response Text : " +captured.text)
         self.assertEqual(captured.status_code, 250)

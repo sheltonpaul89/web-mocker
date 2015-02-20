@@ -38,8 +38,8 @@
             "Accept": {
                 "matches": "text/json"
             },
-            "etag": {
-                "doesNotMatch": "abcd.*"
+            "Etag": {
+                "doesNotMatch": "ab+cd"
             },
             "X-Custom-Header": {
                 "contains": "2134"
@@ -58,6 +58,12 @@
         "queryParameters": {
             "search": {
                 "contains": "Some text"
+            },
+          "firstName": {
+                "equalto": "paul"
+            },
+          "lastName": {
+                "matches": "inf.+?t"
             },
            "searchtext": {
                 "contains": "shelton"

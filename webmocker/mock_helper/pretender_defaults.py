@@ -7,3 +7,4 @@ response_status = 200
 response_body = ''
 portno = 8000
 stub_files_path = 'web_stubs/'
+stub_name = 'global'

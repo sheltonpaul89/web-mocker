@@ -7,7 +7,7 @@ setup(
   author = 'Shelton Paul',
   author_email = 'sheltonpaul89@gmail.com',
   url = 'https://github.com/sheltonpaul89/webmocker', # use the URL to the github repo
-  download_url = 'https://github.com/sheltonpaul89/webmocker/tarball/0.1', # I'll explain this in a second
+  download_url = 'https://github.com/sheltonpaul89/webmocker/tarball/0.1',
   keywords = ['web', 'stubbing', 'http','mock','Web Stubs'], # arbitrary keywords
   classifiers = [],
 )
