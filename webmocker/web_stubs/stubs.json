@@ -1,0 +1,87 @@
+[
+  {
+    "request": {
+      "method": "GET",
+      "url": "/some/thing"
+    },
+    "response": {
+      "status": 210,
+      "body": "Hello world! This request has respnse headers",
+      "headers": {
+        "Content-Type": "text/plain",
+        "header1" :"respose Headers"
+      }
+    }
+  },
+    {
+      "request": {
+        "method": "POST",
+        "url": "/with/body",
+        "bodyPatterns": [
+            { "matches": "<status>OK</status>" },
+            { "doesNotMatch": ".*ERROR.*" }
+        ]
+    },
+    "response": {
+            "status": 270,
+            "body":"This is a POST Request"
+    }
+},
+  {
+    "request": {
+        "method": "POST",
+        "url": "/with/headers",
+        "headers": {
+            "Content-Type": {
+                "equalTo": "text/xml"
+            },
+            "Accept": {
+                "matches": "text/json"
+            },
+            "Etag": {
+                "doesNotMatch": "ab+cd"
+            },
+            "X-Custom-Header": {
+                "contains": "2134"
+            }
+        }
+    },
+    "response": {
+            "status": 250,
+            "body" : "This request URL has headers"
+    }
+},
+  {
+    "request": {
+        "method": "GET",
+        "urlPath": "/with/query",
+        "queryParameters": {
+            "search": {
+                "contains": "Some text"
+            },
+          "firstName": {
+                "equalto": "paul"
+            },
+          "lastName": {
+                "matches": "inf.+?t"
+            },
+           "searchtext": {
+                "contains": "shelton"
+            }
+        }
+    },
+    "response": {
+            "status": 230,
+            "body": "This is a URL Path"
+    }
+},{
+    "request": {
+        "method": "GET",
+        "url": "/body"
+    },
+    "response": {
+        "status": 200,
+        "body": "Literal text to put in the body"
+    }
+}
+]
