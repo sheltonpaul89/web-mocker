@@ -6,8 +6,8 @@ setup(
   description = 'A test lib for stubbing http response',
   author = 'Shelton Paul',
   author_email = 'sheltonpaul89@gmail.com',
-  url = 'https://github.com/sheltonpaul89/webmocker', # use the URL to the github repo
-  download_url = 'https://github.com/sheltonpaul89/webmocker/tarball/0.1',
+  url = 'https://github.com/sheltonpaul89/web-mocker', # use the URL to the github repo
+  download_url = 'https://github.com/sheltonpaul89/web-mocker/tarball/0.1',
   keywords = ['web', 'stubbing', 'http','mock','Web Stubs'], # arbitrary keywords
   classifiers = [],
 )
