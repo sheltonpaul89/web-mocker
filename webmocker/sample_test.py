@@ -24,12 +24,21 @@ class WebTest(unittest.TestCase):
 
     def test_case2(self):
         capture = {}
-        payload = "<status>OK</status>";
+        payload = "<status>OK</status>"
         captured = requests.post('http://127.0.0.1:8001/with/body', data=payload)
         print(captured.status_code)
         print(captured.text)
         self.assertEqual(captured.status_code, 270)
-        self.assertEqual(captured.text, "This is a POST Request")
+        self.assertEqual(captured.text, "This is a POST Request with matches clause")
+
+    def test_case6(self):
+        capture = {}
+        payload = "123ERROORfsdfd"
+        captured = requests.post('http://127.0.0.1:8001/with/body', data=payload)
+        print(captured.status_code)
+        print(captured.text)
+        self.assertEqual(captured.status_code, 270)
+        self.assertEqual(captured.text, "This is a POST Request with doesnt match clause")
 
     def test_case3(self):
         capture = {}
@@ -58,6 +67,24 @@ class WebTest(unittest.TestCase):
         print("Response Text : " +captured.text)
         self.assertEqual(captured.status_code, 250)
         self.assertEqual(captured.text, "This request URL has headers")
+
+    def test_case7(self):
+        capture = {}
+        payload = "<status>OK</status>1323"
+        captured = requests.post('http://127.0.0.1:8001/with/body', data=payload)
+        print(captured.status_code)
+        print(captured.text)
+        self.assertEqual(captured.status_code, 270)
+        self.assertEqual(captured.text, "This is a POST Request with match and doesnot match clause")
+
+    def test_case8(self):
+        capture = {}
+        payload = "this is body"
+        captured = requests.post('http://127.0.0.1:8001/body/with_nopattern', data=payload)
+        print(captured.status_code)
+        print(captured.text)
+        self.assertEqual(captured.status_code, 200)
+        self.assertEqual(captured.text, "This is body with no pattern")
 
 
 if __name__ == '__main__':
