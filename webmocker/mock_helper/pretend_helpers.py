@@ -45,7 +45,12 @@ def get_body_from_json(request_json):
     if(request_json.has_key('bodyPatterns') == False):
         return body
     body = convert_list_to_dict(request_json['bodyPatterns'])
-    return body[0]['matches']
+    body_str = ''
+    if body.has_key('matches'):
+        body_str = body_str + body['matches']
+    if body.has_key('doesNotMatch'):
+        body_str = body_str + 'PPP'+ body['doesNotMatch']
+    return body_str
 
 def get_headers_from_json(request_json):
     if(request_json.has_key('headers') == False):
@@ -63,7 +68,9 @@ def delete_keys(json_element,keys_to_delete):
 
 
 def convert_list_to_dict(dict_element):
-    return [key_value_pair for key_value_pair in dict_element  if isinstance(key_value_pair, dict) and not key_in_list(key_value_pair,not_supported_filters) and key_in_list(key_value_pair,["matches"])]
+    # return [key_value_pair for key_value_pair in dict_element  if isinstance(key_value_pair, dict) and key_in_list(key_value_pair,["matches","doesNotMatch"])]
+    return dict([(key,d[key]) for d in dict_element for key in d])
+
 
 def key_in_list(value,keys_to_delete):
     result = False

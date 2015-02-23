@@ -18,13 +18,39 @@
         "method": "POST",
         "url": "/with/body",
         "bodyPatterns": [
+            { "matches": "<status>OK</status>" }
+        ]
+    },
+    "response": {
+            "status": 270,
+            "body":"This is a POST Request with matches clause"
+    }
+},
+   {
+      "request": {
+        "method": "POST",
+        "url": "/with/body",
+        "bodyPatterns": [
             { "matches": "<status>OK</status>" },
+            { "doesNotMatch": "<status>OK</status>123" }
+        ]
+    },
+    "response": {
+            "status": 270,
+            "body":"This is a POST Request with match and doesnot match clause"
+    }
+},
+  {
+      "request": {
+        "method": "POST",
+        "url": "/with/body",
+        "bodyPatterns": [
             { "doesNotMatch": ".*ERROR.*" }
         ]
     },
     "response": {
             "status": 270,
-            "body":"This is a POST Request"
+            "body":"This is a POST Request with doesnt match clause"
     }
 },
   {
@@ -82,6 +108,16 @@
     "response": {
         "status": 200,
         "body": "Literal text to put in the body"
+    }
+},{
+    "request": {
+        "method": "POST",
+        "url": "/body/with_nopattern",
+        "body" : "this is body"
+    },
+    "response": {
+        "status": 200,
+        "body": "This is body with no pattern"
     }
 }
 ]
