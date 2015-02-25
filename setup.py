@@ -1,12 +1,10 @@
 from distutils.core import setup
 from setuptools import setup, find_packages
 
-from pretend_extended import __version__
-
 setup(
   name = 'webmocker',
   packages=find_packages(), # this must be the same as the name above
-  version = '0.3.1',
+  version = '0.3.2',
   description = 'A test lib for stubbing http response',
   author = 'Shelton Paul',
   install_requires=['pretend_extended'],
