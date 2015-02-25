@@ -2,9 +2,10 @@ from distutils.core import setup
 setup(
   name = 'webmocker',
   packages = ['webmocker'], # this must be the same as the name above
-  version = '0.1',
+  version = '0.2',
   description = 'A test lib for stubbing http response',
   author = 'Shelton Paul',
+  install_requires=['pretend_extended'],
   author_email = 'sheltonpaul89@gmail.com',
   url = 'https://github.com/sheltonpaul89/web-mocker', # use the URL to the github repo
   download_url = 'https://github.com/sheltonpaul89/web-mocker/tarball/0.1',
