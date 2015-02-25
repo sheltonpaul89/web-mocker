@@ -8,12 +8,13 @@ def run(argv):
       stubbing_engine.start(port_number=args[1])
     except:
       print 'Usage : python -m webmocker.server <folderpath> <portNumber>'
+      traceback.print_exc(file=sys.stdout)
       sys.exit(2)
 
 
 if __name__ == '__main__':
     import stubbing_engine
-    import os,getopt,sys
+    import os,getopt,sys,traceback
     run(sys.argv[1:])
 
 

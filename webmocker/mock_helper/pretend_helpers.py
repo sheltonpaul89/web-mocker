@@ -1,7 +1,9 @@
 __author__ = 'admin'
 import os
-from subprocess import call
+from subprocess import call,Popen
+import subprocess
 from multiprocessing import Process
+import multiprocessing
 import re
 import urllib2
 import logging
@@ -19,13 +21,12 @@ server_process = None
 
 def start_pretend(port_number = pretender_defaults.portno):
     global server_process
-    server_process = Process(target=pretend, args=(port_number,))
+    server_process = Process(name='pretend', args=(port_number,),target=pretend)
     server_process.start()
 
 def pretend(port_number):
     global pid
-    with open('pretend.log', 'w') as log_file:
-        pid = call("python -m pretend_extended.server.server --host 127.0.0.1 --port "+ str(port_number), stdout=log_file, shell=False)
+    pid = Popen("python -m pretend_extended.server.server --host 127.0.0.1 --port "+ str(port_number), stdout=subprocess.PIPE, shell=True)
 
 def stop_pretend():
     if(server_process != None):
