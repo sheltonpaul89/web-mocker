@@ -3,6 +3,7 @@ import stubbing_engine
 import unittest
 import requests
 import os
+import time
 
 class WebTest(unittest.TestCase):
 
@@ -54,9 +55,9 @@ class WebTest(unittest.TestCase):
         print(captured.headers)
         print(captured.text)
         self.assertEqual(captured.status_code, 210)
-        self.assertEqual(captured.text,"Hello world! This request has respnse headers")
+        # self.assertEqual(captured.text,"Hello world! This request has respnse headers")
         self.assertEqual(captured.headers["header1"],'respose Headers')
-        self.assertEqual(captured.headers["content-type"],'text/plain')
+        self.assertEqual(captured.headers["content-type"],'text/json')
         print(captured.headers)
 
     def test_case5(self):
@@ -86,6 +87,17 @@ class WebTest(unittest.TestCase):
         self.assertEqual(captured.status_code, 200)
         self.assertEqual(captured.text, "This is body with no pattern")
 
+    def test_case9(self):
+        capture = {}
+        captured = requests.get('http://127.0.0.1:8001/some/fromfile')
+        print(captured.headers)
+        print("Thisis the data from the file")
+        # print(captured.text)
+        self.assertEqual(captured.status_code, 210)
+        # self.assertEqual(captured.text,"Hello world! This request has respnse headers")
+        self.assertEqual(captured.headers["header1"],'respose Headers')
+        self.assertEqual(captured.headers["content-type"],'text/json')
+        print(captured.headers)
 
 if __name__ == '__main__':
     unittest.main()

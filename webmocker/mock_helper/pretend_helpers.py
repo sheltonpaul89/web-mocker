@@ -131,6 +131,14 @@ def process_stub_files(stub_files_path):
 
 
 def get_url(request_json):
-    url = request_json['url'].replace('?','\?') if request_json.has_key('url') else pretender_defaults.url
+    url = request_json['url'].replace('?','\?')+'$' if request_json.has_key('url') else pretender_defaults.url
     url = request_json['urlPattern'].replace('?','\?') if request_json.has_key('urlPattern') else url
     return request_json['urlPath'].replace('?','\?')+'(/.*)?' if request_json.has_key('urlPath') else url
+
+def get_response_body_from_json(response_body):
+    if(os.path.exists(response_body)):
+        file = open(response_body, 'r')
+        file_content = file.read()
+        return file_content
+    else:
+        return response_body
