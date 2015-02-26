@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 setup(
   name = 'webmocker',
   packages=find_packages(), # this must be the same as the name above
-  version = '0.3.2',
+  version = '0.3',
   description = 'A test lib for stubbing http response',
   author = 'Shelton Paul',
   install_requires=['pretend_extended'],

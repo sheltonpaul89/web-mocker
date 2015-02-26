@@ -6,9 +6,23 @@
     },
     "response": {
       "status": 210,
-      "body": "Hello world! This request has respnse headers",
+      "body": "{\"employees\":[{\"firstName\":\"John\", \"lastName\":\"Doe\"}, {\"firstName\":\"Anna\", \"lastName\":\"Smith\"},{\"firstName\":\"Peter\", \"lastName\":\"Jones\"}]}",
       "headers": {
-        "Content-Type": "text/plain",
+        "Content-Type": "text/json",
+        "header1" :"respose Headers"
+      }
+    }
+  },
+   {
+    "request": {
+      "method": "GET",
+      "url": "/some/fromfile"
+    },
+    "response": {
+      "status": 210,
+      "body": "/web_stubs/stubs.json",
+      "headers": {
+        "Content-Type": "text/json",
         "header1" :"respose Headers"
       }
     }
