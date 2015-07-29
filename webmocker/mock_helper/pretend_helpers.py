@@ -26,7 +26,7 @@ def start_pretend(port_number = pretender_defaults.portno):
 
 def pretend(port_number):
     global pid
-    pid = Popen("python -m pretend_extended.server.server --host 127.0.0.1 --port "+ str(port_number), stdout=subprocess.PIPE, shell=True)
+    pid = Popen("python -m pretend_extended.server.server --host 0.0.0.0 --port "+ str(port_number), stdout=subprocess.PIPE, shell=True)
 
 def stop_pretend():
     if(server_process != None):
