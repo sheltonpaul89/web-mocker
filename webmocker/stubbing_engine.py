@@ -18,7 +18,7 @@ def start(port_number = pretender_defaults.portno,stub_name = pretender_defaults
     pretender_defaults.stub_name = stub_name
     restart_pretend(port_number)                      # Stopping and Starting the pretend_extended
     stub_files_path = get_stub_files_path()
-    time.sleep(5)
+    time.sleep(3)
     pretend_helpers.process_stub_files(stub_files_path)
 
 def stop():

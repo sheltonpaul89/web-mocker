@@ -125,9 +125,12 @@ def process_stubs(stubs):
 
 def process_stub_files(stub_files_path):
     for stub_file in glob(stub_files_path+'*.json'):   # iterate for each json file
-        stubs = json.load(open(stub_file))
-        LOGGER.debug(stub_file)
-        process_stubs(stubs)
+        try:
+            stubs = json.load(open(stub_file))
+            LOGGER.debug(stub_file)
+            process_stubs(stubs)
+        except:
+            LOGGER.debug('Exception while Processing Json file')
 
 
 def get_url(request_json):
